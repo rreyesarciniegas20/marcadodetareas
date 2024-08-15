@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --item-bg-color: #fff;
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --completed-color: #aaa;
+    --date-time-color: #666;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --delete-button-bg: #dc3545;
+    --delete-button-hover-bg: #c82333;
+    --return-button-bg: #28a745;
+    --return-button-hover-bg: #218838;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark-mode {
+    --bg-color: #222;
+    --text-color: #f5f5f5;
+    --item-bg-color: #333;
+    --button-bg: #0056b3;
+    --button-hover-bg: #003d82;
+    --completed-color: #888;
+    --date-time-color: #bbb;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    --delete-button-bg: #a71d2a;
+    --delete-button-hover-bg: #8b1521;
+    --return-button-bg: #1e7e34;
+    --return-button-hover-bg: #165c26;
+}
+
+body {
+    font-family: var(--font-family);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+h1, h2 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+#taskForm {
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    width: 100%;
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: var(--item-bg-color);
+    color: var(--text-color);
+}
+
+button {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    outline: none;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: var(--item-bg-color);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: opacity var(--transition-speed);
+    opacity: 1;
+}
+
+li.hide {
+    opacity: 0.5;
+}
+
+li .task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.drag-icon {
+    cursor: move;
+    color: var(--text-color);
+    font-size: 1.2em;
+}
+
+li:hover {
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--completed-color);
+}
+
+.date-time {
+    font-size: 12px;
+    color: var(--date-time-color);
+    margin-left: 10px;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.delete-button {
+    background-color: var(--delete-button-bg);
+}
+
+.delete-button:hover {
+    background-color: var(--delete-button-hover-bg);
+}
+
+.return-button {
+    background-color: var(--return-button-bg);
+}
+
+.return-button:hover {
+    background-color: var(--return-button-hover-bg);
+}
+
+#darkModeToggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.5em;
+    transition: color var(--transition-speed);
+}
+
+#darkModeToggle:hover {
+    color: var(--button-hover-bg);
+}
+
+.task-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.task-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-container {
+    min-height: 50px;
+    border: 1px dashed var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .task-board {
+        grid-template-columns: 1fr;
+    }
+    
+    #taskForm {
+        flex-direction: column;
+    }
+
+    #taskInput {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
